@@ -1,7 +1,7 @@
 import pickle
 
 
-class _FileMetaData:
+class FileMetaData:
     def __init__(self, count, file_name):
         self.count = count
         self.file_name = file_name
@@ -10,20 +10,21 @@ class _FileMetaData:
         return f"Line count: {self.count}; File name: {self.file_name}"
 
 
-def create_file(file_name):
-    count_txt = 0
+def write_to_file(file_name, text):
     with open(f"{file_name}.txt", 'w') as f:
-        user_input = input("Введите строку ")
-        while user_input != 'quit':
-            user_input = input("Введите строку ")
-            f.write(f'{user_input}\n')
-            count_txt += 1
+        f.write(f'{text}\n')
 
+
+def write_metadata(metadata):
     with open('metadata.pkl', 'wb') as f:
-        pickle.dump(_FileMetaData(count_txt, file_name), f)
+        pickle.dump(metadata, f)
 
+
+def read_file(file_name):
     with open(f"{file_name}.txt", 'r') as f:
         print(f'file: {f.read()}')
 
+
+def read_metadata():
     with open('metadata.pkl', 'rb') as f:
         print(f'metadata: {pickle.load(f)}')
