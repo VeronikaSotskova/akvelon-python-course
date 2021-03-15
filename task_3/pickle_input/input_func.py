@@ -10,9 +10,8 @@ class FileMetaData:
         return f"Line count: {self.count}; File name: {self.file_name}"
 
 
-def write_to_file(file_name, text):
-    with open(f"{file_name}.txt", 'w') as f:
-        f.write(f'{text}\n')
+def write_to_file(file, text):
+    file.write(f'{text}\n')
 
 
 def write_metadata(metadata):
