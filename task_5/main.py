@@ -18,17 +18,17 @@ def check_email(email):
 
 
 def check_left_part_email(left_part):
-    pattern = re.compile('[\w]+')
+    pattern = re.compile('[\w.]+')
     return pattern.match(left_part)
 
 
 def check_right_part_email(right_part):
-    pattern = re.compile('[\w.]+(\.(com|ru|org|net|ua))')
+    pattern = re.compile('[\w.]+(com|ru|org|net|ua)')
     return pattern.match(right_part)
 
 
 def check_whole_email(email):
-    pattern = re.compile('[\w]+[@]{1}[\w.]+(\.(com|ru|org|net|ua))')
+    pattern = re.compile('[\w.]+@[\w.]+(\.(com|ru|org|net|ua))')
     return pattern.match(email)
 
 
